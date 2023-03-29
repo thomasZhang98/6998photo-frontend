@@ -2,15 +2,21 @@ var apigClient = apigClientFactory.newClient({ apiKey: "bDIGszy43q1tj2xYi0WTZ5lE
 
 function search() {
   var searchTerm = document.getElementById("searchbar").value;
+  var status = document.getElementById("status")
   
   var params = {
     "q": searchTerm
   };
 
+  status.innerHTML = "Request sent, waiting for response...";
+
   apigClient.searchGet(params, {}, {})
     .then(function (result) {
       showImages(result.data);
+      status.innerHTML = "";
     }).catch(function (result) {
+      alert("Error retrieving response, please try again later")
+      status.innerHTML = "";
       console.log(result);
     });
 }
@@ -19,23 +25,28 @@ function showImages(data) {
   var imagesDiv = document.getElementById("images")
   var urls = data["results"]
 
-  var complete = ""
-  var row = "<div class=\"row\">"
-  for (let i = 0; i < urls.length; i++) {
-    row += `<img src=${urls[i]} height="500" style="margin-right=10px">`
-    if ((i + 1) % 3 == 0) {
-      row += "</div>"
-      complete += row
-      row = "<div class=\"row\">"
+  if (urls != []) {
+    // var complete = ""
+    var row = "<div class=\"row\">"
+    for (let i = 0; i < urls.length; i++) {
+      row += `<img src=${urls[i]} height="500" style="margin-right=10px">`
+      // if ((i + 1) % 3 == 0) {
+      //   row += "</div>"
+      //   complete += row
+      //   row = "<div class=\"row\">"
+      // }
     }
-  }
 
-  if (row != "<div class=\"row\">") {
-    complete += row
-    complete += "</div>"
-  }
+    // if (row != "<div class=\"row\">") {
+    //   complete += row
+    //   complete += "</div>"
+    // }
+    row += "</div>"
 
-  imagesDiv.innerHTML = complete
+    imagesDiv.innerHTML = row
+  } else {
+    alert("No images found, please try other labels")
+  }
 }
 
 function upload() {
@@ -63,6 +74,7 @@ function upload() {
       }).catch(function(result){
           //This is where you would put an error callback
           console.log(result)
+          alert('Error uploading image, please try again later')
       });
   }; 
 
