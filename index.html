@@ -1,0 +1,62 @@
+<div>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="apiGateway-js-sdk/lib/axios/dist/axios.standalone.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/lib/CryptoJS/rollups/sha256.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/lib/CryptoJS/components/hmac.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/lib/CryptoJS/components/enc-base64.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/lib/url-template/url-template.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/lib/apiGatewayCore/utils.js"></script>
+        <script type="text/javascript" src="apiGateway-js-sdk/apigClient.js"></script>
+        <script type="text/javascript" src="index.js"></script>
+    </head>
+    <div style="text-align: center">
+        <div class ="title">
+            Photo Search
+        </div>
+        <div class="bar">
+            <input style="display:inline-block;" id="searchbar" class="searchbar" type="text" title="Search" placeholder="show me LABEL1(and LABEL2)">
+            <span>
+                <a style="display:inline-block;" href="#" onclick="searchByVoice()"> 
+                    <img class="microphone" style="display:inline;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Google_mic.svg/716px-Google_mic.svg.png" title="Voice Search">
+                </a>
+            </span>
+        </div>
+        <p id="status"></p>
+
+        <div class="buttons">
+            <button  class="button" type="button" onclick="search()">Search Photos</button>
+        </div>
+         
+         
+        <div class="title">
+            Upload Photo and custom label
+        </div>
+        <div class="buttons">
+            <div>
+                <label for="file-upload">
+                    Select Image:
+                </label>
+                <input type="file" accept="image/*" id="image" name="filename">
+            </div>
+            <div>
+                <label for="labels">
+                    Custom label(s) (optional):
+                </label>
+                <input type="text" id="labels" class="label" title="Label" placeholder="labels separated by comma">
+            </div>
+            <div>
+                <button  class="button" type="button" onclick="upload()">Upload Photos</button>
+            </div>
+        </div>
+        <br>
+        <div class="container" id="images"></div>
+    </div>
+</div>
