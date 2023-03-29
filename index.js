@@ -26,21 +26,11 @@ function showImages(data) {
   var urls = data["results"]
 
   if (urls != []) {
-    // var complete = ""
     var row = "<div class=\"row\">"
     for (let i = 0; i < urls.length; i++) {
       row += `<img src=${urls[i]} height="500" style="margin-right=10px">`
-      // if ((i + 1) % 3 == 0) {
-      //   row += "</div>"
-      //   complete += row
-      //   row = "<div class=\"row\">"
-      // }
     }
 
-    // if (row != "<div class=\"row\">") {
-    //   complete += row
-    //   complete += "</div>"
-    // }
     row += "</div>"
 
     imagesDiv.innerHTML = row
