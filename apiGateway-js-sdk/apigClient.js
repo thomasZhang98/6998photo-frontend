@@ -53,7 +53,7 @@ apigClientFactory.newClient = function (config) {
 
     
     // extract endpoint and path from url
-    var invokeUrl = 'https://e1371dfvrl.execute-api.us-east-1.amazonaws.com/test-stage';
+    var invokeUrl = 'https://kbfilm3xw8.execute-api.us-east-1.amazonaws.com/stage1';
     var endpoint = /(^https?:\/\/[^\/]+)/g.exec(invokeUrl)[1];
     var pathComponent = invokeUrl.substring(endpoint.length);
 
@@ -122,12 +122,12 @@ apigClientFactory.newClient = function (config) {
     apigClient.uploadPut = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['Content-Type', 'filename', 'x-amz-meta-customLabels'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['Content-Type', 'filename', 'x-amz-meta-customLabels', 'body'], ['body']);
         
         var uploadPutRequest = {
             verb: 'put'.toUpperCase(),
             path: pathComponent + uritemplate('/upload').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, ['Content-Type', 'filename', 'x-amz-meta-customLabels']),
+            headers: apiGateway.core.utils.parseParametersToObject(params, ['Content-Type', 'filename', 'x-amz-meta-customLabels', ]),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
