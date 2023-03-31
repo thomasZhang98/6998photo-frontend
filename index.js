@@ -28,7 +28,8 @@ function showImages(data) {
   var urls = data["results"]
   console.log(urls)
 
-  if (urls != []) {
+  if (JSON.stringify(urls) !== JSON.stringify([])) {
+    console.log("has images")
     var row = "<div class=\"row\">"
     for (let i = 0; i < urls.length; i++) {
       row += `<img src=${urls[i]} height="500" style="margin-right=10px">`
@@ -38,6 +39,7 @@ function showImages(data) {
 
     imagesDiv.innerHTML = row
   } else {
+    console.log("no images")
     status.innerHTML = "No images found, please try other labels"
     alert("No images found, please try other labels")
   }
