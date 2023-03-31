@@ -23,7 +23,9 @@ function search() {
 
 function showImages(data) {
   var imagesDiv = document.getElementById("images")
+  var status = document.getElementById("status")
   var urls = data["results"]
+  console.log(urls)
 
   if (urls != []) {
     var row = "<div class=\"row\">"
@@ -35,6 +37,7 @@ function showImages(data) {
 
     imagesDiv.innerHTML = row
   } else {
+    status.innerHTML = "No images found, please try other labels"
     alert("No images found, please try other labels")
   }
 }
