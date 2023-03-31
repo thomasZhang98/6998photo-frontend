@@ -22,6 +22,7 @@ function search() {
 }
 
 function showImages(data) {
+  console.log(data)
   var imagesDiv = document.getElementById("images")
   var status = document.getElementById("status")
   var urls = data["results"]
